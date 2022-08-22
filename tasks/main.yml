@@ -1,0 +1,18 @@
+---
+# tasks file for filebeat
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+  
+- name: Filebeat- Install filebeat.
+  package:
+    name: "{{filebeat_package}}={{beat_version}}"
+    state: "{{filebeat_package_state}}"
+
+- name: Filebeat- Start Filebeat.
+  service:
+    name: filebeat
+    state: "{{ filebeat_service_state }}"
+    enabled: "{{ filebeat_service_enabled }}"
