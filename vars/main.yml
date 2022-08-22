@@ -1,0 +1,11 @@
+---
+# vars file for filebeat
+elastic_repo_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+elastic_repo_path: "deb https://artifacts.elastic.co/packages/{{beat_package_version}}/apt stable main"
+elastic_repo_version: "elastic-{{beat_package_version}}"
+
+filebeat_package: filebeat
+filebeat_package_state: present
+
+filebeat_service_state: started
+filebeat_service_enabled: true
